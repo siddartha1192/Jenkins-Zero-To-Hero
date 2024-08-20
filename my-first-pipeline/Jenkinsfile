@@ -6,15 +6,15 @@ pipeline {
       steps {
                 // Use AWS CLI to create an EC2 instance
                 sh '''
-                aws ec2 run-instances \
-                    --image-id ami-04a81a99f5ec58529 \  # Update with your AMI ID
-                    --count 1 \
-                    --instance-type t2.micro \
-                    --key-name terraform-demo-abhi \
-                    --security-group-ids sg-039a75dbfabd9a359 \
-                    --subnet-id subnet-01cf895b68b592cec \
-                    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Jenkins-EC2-Instance}]' \
-                    --query 'Instances[0].InstanceId' \
+                aws ec2 run-instances 
+                    --image-id ami-04a81a99f5ec58529  # Update with your AMI ID
+                    --count 1
+                    --instance-type t2.micro
+                    --key-name terraform-demo-abhi 
+                    --security-group-ids sg-039a75dbfabd9a359
+                    --subnet-id subnet-01cf895b68b592cec
+                    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Jenkins-EC2-Instance}]'
+                    --query 'Instances[0].InstanceId'
                     --output text
                 '''
             }
